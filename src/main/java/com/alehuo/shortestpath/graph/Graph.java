@@ -47,8 +47,7 @@ public class Graph {
     }
 
     /**
-     * Add a single-way edge between two nodes, from (n1 to n2) with a custom
-     * weight.
+     * Add a single-way edge between nodes (n1 => n2) with a custom weight.
      *
      * @param n1 Node #1
      * @param n2 Node #2
@@ -59,8 +58,7 @@ public class Graph {
     }
 
     /**
-     * Add a two-way edge between nodes, from (n1 to n2) and (n2 to n1) with a
-     * custom weight.
+     * Add a two-way edge between nodes (n1 <=> n2) with a custom weight.
      *
      * @param n1 Node #1
      * @param n2 Node #2
@@ -72,8 +70,7 @@ public class Graph {
     }
 
     /**
-     * Add a single-way edge between two nodes, from (n1 to n2) with a weight of
-     * 1.
+     * Add a single-way edge between two nodes, (n1 => n2) with a weight of 1.
      *
      * @param n1 Node #1
      * @param n2 Node #2
@@ -83,8 +80,7 @@ public class Graph {
     }
 
     /**
-     * Add a two-way edge between nodes, from (n1 to n2) and (n2 to n1) with a
-     * weight of 1.
+     * Add a two-way edge between nodes (n1 <=> n2) with a weight of 1.
      *
      * @param n1 Node #1
      * @param n2 Node #2
@@ -98,10 +94,10 @@ public class Graph {
     }
 
     /**
-     * Returns the list of connections fron node n.
+     * Returns the list of outcoming edges fron node n.
      *
      * @param n Node
-     * @return List of connections fron node n
+     * @return List of outcoming edges fron node n
      */
     public ArrayList<Edge> getEdgesFrom(Node n) {
         return adjacencyList[n.getKey()];
@@ -126,7 +122,7 @@ public class Graph {
      * @param n1 Starting node
      * @param n2 Ending node
      * @return Returns -1 if a path is not found, otherwise returns the shortest
-     * path.
+     * path between nodes n1 and n2
      * @throws NegativeWeightException Dijkstra's algorithm doesn't allow
      * negative weights, so throws an exception if one is found.
      */
