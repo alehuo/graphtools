@@ -108,6 +108,16 @@ public class Graph {
         }
     }
 
+    /**
+     * Returns the shortest path between nodes using Dijkstra's algorithm.
+     *
+     * @param n1 Starting node
+     * @param n2 Ending node
+     * @return Returns -1 if a path is not found, otherwise returns the shortest
+     * path.
+     * @throws NegativeWeightException Dijkstra's algorithm doesn't allow
+     * negative weights, so throws an exception if one is found.
+     */
     public long shortestDistance(int n1, int n2) throws NegativeWeightException {
         Dijkstra d = new Dijkstra(this);
         return d.shortestDistance(n1, n2);
