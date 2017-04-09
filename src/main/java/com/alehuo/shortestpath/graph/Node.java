@@ -14,50 +14,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath;
+package com.alehuo.shortestpath.graph;
 
 /**
  * Node class.
  *
  * @author alehuo
  */
-public class Node implements Comparable<Node> {
+public class Node {
 
-    public int k;
-    private long w;
+    private final int key;
 
-    /**
-     * Node class.
-     *
-     * @param k Node
-     * @param w Weight
-     */
-    public Node(int k, long w) {
-        this.k = k;
-        this.w = w;
+    public Node(int key) {
+        this.key = key;
     }
 
-    public long getW() {
-        return w;
-    }
-
-    public void setW(long w) {
-        this.w = w;
-    }
-
-    @Override
-    public int compareTo(Node o) {
-        if (o.getW() - this.getW() > 0) {
-            return -1;
-        } else if (o.getW() - this.getW() < 0) {
-            return 1;
-        }
-        return 0;
-    }
-
-    @Override
-    public String toString() {
-        return k + " (w: " + w + ")";
+    public int getKey() {
+        return key;
     }
 
 }

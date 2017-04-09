@@ -16,6 +16,8 @@
  */
 package com.alehuo.shortestpath;
 
+import com.alehuo.shortestpath.graph.Graph;
+import com.alehuo.shortestpath.graph.Node;
 import com.alehuo.shortestpath.exception.NegativeWeightException;
 
 /**
@@ -24,70 +26,21 @@ import com.alehuo.shortestpath.exception.NegativeWeightException;
 public class Main {
 
     public static void main(String[] args) throws NegativeWeightException {
+
         Graph g = new Graph(5);
-        g.addConnection(1, 4, 5, true);
-        g.addConnection(1, 2, 2, true);
-        g.addConnection(2, 4, 5, true);
-        g.addConnection(2, 5, 4, true);
-        g.addConnection(2, 3, 14, true);
-        g.addConnection(4, 5, 58, true);
-        g.addConnection(3, 5, 34, true);
+        g.addConnection(new Node(1), new Node(4), 5, true); //1 <--> 4
+        g.addConnection(new Node(1), new Node(2), 2, true); //1 <--> 2
+        g.addConnection(new Node(2), new Node(4), 5, true); //2 <--> 4
+        g.addConnection(new Node(2), new Node(5), 4, true); //2 <--> 5
+        g.addConnection(new Node(2), new Node(3), 14, true); //2 <--> 3
+        g.addConnection(new Node(4), new Node(5), 58); //4 --> 5
+        g.addConnection(new Node(3), new Node(5), 34, false); //3 --> 5
 
         for (int i = 1; i <= 5; i++) {
             for (int j = 1; j <= 5; j++) {
-                System.out.println(i + " -> " + j + " : " + g.shortestDistance(i, j));
+                System.out.println(i + " -> " + j + " : " + g.shortestDistance(new Node(i), new Node(j)));
             }
         }
 
-        System.out.println("#############################");
-
-        g = new Graph(5);
-        g.addConnection(1, 4, 5, true);
-        g.addConnection(1, 2, 2, true);
-        g.addConnection(2, 4, 5, true);
-        g.addConnection(5, 2, 4, false);
-        g.addConnection(2, 3, 14, true);
-        g.addConnection(4, 5, 58, true);
-        g.addConnection(3, 5, 34, true);
-
-        for (int i = 1; i <= 5; i++) {
-            for (int j = 1; j <= 5; j++) {
-                System.out.println(i + " -> " + j + " : " + g.shortestDistance(i, j));
-            }
-        }
-
-        System.out.println("#############################");
-
-        g = new Graph(5);
-        g.addConnection(1, 4, 5, true);
-        g.addConnection(1, 2, 2, true);
-        g.addConnection(2, 4, 5, true);
-        g.addConnection(5, 2, 4, false);
-        g.addConnection(3, 2, 14, false);
-        g.addConnection(4, 5, 58, true);
-        g.addConnection(3, 5, 34, true);
-
-        for (int i = 1; i <= 5; i++) {
-            for (int j = 1; j <= 5; j++) {
-                System.out.println(i + " -> " + j + " : " + g.shortestDistance(i, j));
-            }
-        }
-
-        System.out.println("#############################");
-
-        g = new Graph(5);
-
-        g.addConnection(1, 2, 9, true);
-        g.addConnection(1, 3, 3, true);
-        g.addConnection(2, 3, 4, true);
-        g.addConnection(2, 5, 20, true);
-        g.addConnection(2, 4, 18, true);
-        g.addConnection(3, 5, 15, true);
-
-        for (int i = 1; i <= 5; i++) {
-            for (int j = 1; j <= 5; j++) {
-                System.out.println(i + " -> " + j + " : " + g.shortestDistance(i, j));
-            }
-        }
     }
 }

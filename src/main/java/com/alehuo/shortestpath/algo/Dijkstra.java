@@ -16,8 +16,9 @@
  */
 package com.alehuo.shortestpath.algo;
 
-import com.alehuo.shortestpath.Graph;
-import com.alehuo.shortestpath.Node;
+import com.alehuo.shortestpath.graph.Graph;
+import com.alehuo.shortestpath.graph.Edge;
+import com.alehuo.shortestpath.graph.Node;
 import com.alehuo.shortestpath.exception.NegativeWeightException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,21 +52,21 @@ public class Dijkstra {
      * negative weights, so throws an exception if one is found.
      */
     public long[][] allShortestDistances() throws NegativeWeightException {
-        long[][] distMatrice = new long[g.getN() + 1][g.getN() + 1];
-        for (long[] ls : distMatrice) {
+        long[][] dist = new long[g.getN() + 1][g.getN() + 1];
+        for (long[] ls : dist) {
             Arrays.fill(ls, Long.MAX_VALUE);
         }
-        for (int i = 0; i < distMatrice.length; i++) {
-            for (int j = 0; j < distMatrice.length; j++) {
+        for (int i = 0; i < dist.length; i++) {
+            for (int j = 0; j < dist.length; j++) {
                 if (i == j) {
-                    distMatrice[i][j] = 0;
+                    dist[i][j] = 0;
                 } else {
-                    distMatrice[i][j] = shortestDistance(i, j);
+                    dist[i][j] = shortestDistance(new Node(i), new Node(j));
                 }
             }
         }
 
-        return distMatrice;
+        return dist;
     }
 
     /**
@@ -80,36 +81,38 @@ public class Dijkstra {
      * @throws NegativeWeightException Dijkstra's algorithm doesn't allow
      * negative weights, so throws an exception if one is found.
      */
-    public long shortestDistance(int n1, int n2) throws NegativeWeightException {
+    public long shortestDistance(Node n1, Node n2) throws NegativeWeightException {
         boolean[] visited = new boolean[g.getN() + 1];
         long[] dist = new long[g.getN() + 1];
         Arrays.fill(dist, Long.MAX_VALUE);
-        dist[n1] = 0;
+        dist[n1.getKey()] = 0;
 
-        PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
-        priorityQueue.add(new Node(n1, dist[n1]));
+        PriorityQueue<Edge> priorityQueue = new PriorityQueue<>();
+
+        //Add the starting edge to the queue
+        priorityQueue.add(new Edge(n1, dist[n1.getKey()]));
 
         while (!priorityQueue.isEmpty()) {
-            Node n = priorityQueue.poll();
-            if (n.getW() < 0) {
+            Edge n = priorityQueue.poll();
+            if (n.getWeight() < 0) {
                 throw new NegativeWeightException();
             }
-            ArrayList<Node> connections = g.getConnections(n.k);
-            for (Node connection : connections) {
-                if (connection.getW() < 0) {
+            ArrayList<Edge> connections = g.getEdgesFrom(n.getNode());
+            for (Edge connection : connections) {
+                if (connection.getWeight() < 0) {
                     throw new NegativeWeightException();
                 }
-                if (!visited[connection.k]) {
-                    if (n.getW() + connection.getW() < dist[connection.k]) {
-                        dist[connection.k] = n.getW() + connection.getW();
-                        Node tmpNode = new Node(connection.k, n.getW() + connection.getW());
+                if (!visited[connection.getNode().getKey()]) {
+                    if (n.getWeight() + connection.getWeight() < dist[connection.getNode().getKey()]) {
+                        dist[connection.getNode().getKey()] = n.getWeight() + connection.getWeight();
+                        Edge tmpNode = new Edge(connection.getNode(), n.getWeight() + connection.getWeight());
                         priorityQueue.add(tmpNode);
                     }
                 }
             }
-            visited[n.k] = true;
+            visited[n.getNode().getKey()] = true;
         }
-        return (dist[n2] == Long.MAX_VALUE) ? -1 : dist[n2];
+        return (dist[n2.getKey()] == Long.MAX_VALUE) ? -1 : dist[n2.getKey()];
     }
 
 }

@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath;
+package com.alehuo.shortestpath.graph;
 
 import com.alehuo.shortestpath.algo.Dijkstra;
 import com.alehuo.shortestpath.exception.NegativeWeightException;
@@ -46,17 +46,17 @@ public class Graph {
     }
 
     /**
-     * Add a connection between nodes.
+     * Add a connection between two nodes.
      *
      * @param n1 Node #1
      * @param n2 Node #2
      * @param weight Weight of the node
      * @param bothWays Is the connection bidirectional
      */
-    public void addConnection(int n1, int n2, long weight, boolean bothWays) {
-        adjacencyList[n1].add(new Node(n2, weight));
+    public void addConnection(Node n1, Node n2, long weight, boolean bothWays) {
+        adjacencyList[n1.getKey()].add(new Edge(n2, weight));
         if (bothWays) {
-            adjacencyList[n2].add(new Node(n1, weight));
+            adjacencyList[n2.getKey()].add(new Edge(n1, weight));
         }
     }
 
@@ -67,8 +67,8 @@ public class Graph {
      * @param n2 Node #2
      * @param weight Weight of the node
      */
-    public void addConnection(int n1, int n2, long weight) {
-        adjacencyList[n1].add(new Node(n2, weight));
+    public void addConnection(Node n1, Node n2, long weight) {
+        adjacencyList[n1.getKey()].add(new Edge(n2, weight));
     }
 
     /**
@@ -77,8 +77,8 @@ public class Graph {
      * @param n1 Node #1
      * @param n2 Node #2
      */
-    public void addConnection(int n1, int n2) {
-        adjacencyList[n1].add(new Node(n2, 1));
+    public void addConnection(Node n1, Node n2) {
+        adjacencyList[n1.getKey()].add(new Edge(n2, 1));
     }
 
     public int getN() {
@@ -91,8 +91,8 @@ public class Graph {
      * @param n Node
      * @return List of connections fron node n
      */
-    public ArrayList<Node> getConnections(int n) {
-        return adjacencyList[n];
+    public ArrayList<Edge> getEdgesFrom(Node n) {
+        return adjacencyList[n.getKey()];
     }
 
     /**
@@ -101,7 +101,7 @@ public class Graph {
     public void printAdjacencyList() {
         for (int i = 1; i < adjacencyList.length; i++) {
             System.out.println("Connections from node " + i + ":");
-            ArrayList<Node> arrayList = adjacencyList[i];
+            ArrayList<Edge> arrayList = adjacencyList[i];
             arrayList.forEach((n) -> {
                 System.out.println("--> " + n);
             });
@@ -118,7 +118,7 @@ public class Graph {
      * @throws NegativeWeightException Dijkstra's algorithm doesn't allow
      * negative weights, so throws an exception if one is found.
      */
-    public long shortestDistance(int n1, int n2) throws NegativeWeightException {
+    public long shortestDistance(Node n1, Node n2) throws NegativeWeightException {
         Dijkstra d = new Dijkstra(this);
         return d.shortestDistance(n1, n2);
     }
