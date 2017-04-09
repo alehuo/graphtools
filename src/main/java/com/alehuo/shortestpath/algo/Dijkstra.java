@@ -33,10 +33,15 @@ import java.util.PriorityQueue;
 public class Dijkstra {
 
     /**
-     * Graph
+     * Graph.
      */
     private final Graph g;
 
+    /**
+     * Dijkstra's algorithm.
+     *
+     * @param g Graph
+     */
     public Dijkstra(Graph g) {
         this.g = g;
     }
