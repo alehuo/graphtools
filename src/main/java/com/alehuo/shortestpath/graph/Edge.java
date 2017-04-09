@@ -23,8 +23,8 @@ package com.alehuo.shortestpath.graph;
  */
 public class Edge implements Comparable<Edge> {
 
-    private Node node;
-    private long weight;
+    private final Node node;
+    private final long weight;
 
     /**
      * Edge class.
