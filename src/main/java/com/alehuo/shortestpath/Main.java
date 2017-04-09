@@ -27,17 +27,29 @@ public class Main {
 
     public static void main(String[] args) throws NegativeWeightException {
 
-        Graph g = new Graph(5);
-        g.addTwEdge(new Node(1), new Node(4), 5); //1 <--> 4
-        g.addTwEdge(new Node(1), new Node(2), 2); //1 <--> 2
-        g.addTwEdge(new Node(2), new Node(4), 5); //2 <--> 4
-        g.addTwEdge(new Node(2), new Node(5), 4); //2 <--> 5
-        g.addTwEdge(new Node(2), new Node(3), 14); //2 <--> 3
-        g.addTwEdge(new Node(4), new Node(5), 58); //4 --> 5
-        g.addTwEdge(new Node(3), new Node(5), 34); //3 --> 5
+        int nodeCount = 7;
 
-        for (int i = 1; i <= 5; i++) {
-            for (int j = 1; j <= 5; j++) {
+        Graph g = new Graph(nodeCount);
+
+        //Two way edges with custom weights
+        g.addTwEdge(new Node(1), new Node(4), 5); //1 <-(5)-> 4
+        g.addTwEdge(new Node(1), new Node(2), 2); //1 <-(2)-> 2
+        g.addTwEdge(new Node(2), new Node(4), 5); //2 <-(5)-> 4
+        g.addTwEdge(new Node(2), new Node(5), 4); //2 <-(4)-> 5
+        g.addTwEdge(new Node(2), new Node(3), 14); //2 <-(14)-> 3
+
+        //Two way edge with a basic weight
+        g.addTwEdge(new Node(1), new Node(3)); //1 <-(1)-> 3
+
+        //Single way edges with custom weights
+        g.addSwEdge(new Node(4), new Node(5), 58); //4 -(58)-> 5
+        g.addSwEdge(new Node(3), new Node(5), 34); //3 -(34)-> 5
+
+        //Single way edge with a basic weight
+        g.addSwEdge(new Node(6), new Node(7)); //6 -(1)-> 7
+
+        for (int i = 1; i <= nodeCount; i++) {
+            for (int j = 1; j <= nodeCount; j++) {
                 System.out.println(i + " -> " + j + " : " + g.shortestDistance(new Node(i), new Node(j)));
             }
         }
