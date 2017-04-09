@@ -39,6 +39,7 @@ public class Graph {
 
     public Graph(int n) {
         this.n = n;
+        //Initialize adjacency list
         adjacencyList = new ArrayList[n + 1];
         for (int i = 0; i < adjacencyList.length; i++) {
             adjacencyList[i] = new ArrayList();
@@ -46,7 +47,8 @@ public class Graph {
     }
 
     /**
-     * Add a single-way edge between two nodes, from n1 to n2.
+     * Add a single-way edge between two nodes, from (n1 to n2) with a custom
+     * weight.
      *
      * @param n1 Node #1
      * @param n2 Node #2
@@ -57,7 +59,8 @@ public class Graph {
     }
 
     /**
-     * Add a two-way edge between nodes, from n1 to n2 and n2 to n1.
+     * Add a two-way edge between nodes, from (n1 to n2) and (n2 to n1) with a
+     * custom weight.
      *
      * @param n1 Node #1
      * @param n2 Node #2
@@ -69,7 +72,7 @@ public class Graph {
     }
 
     /**
-     * Add a single-way edge between two nodes, from n1 to n2 with a weight of
+     * Add a single-way edge between two nodes, from (n1 to n2) with a weight of
      * 1.
      *
      * @param n1 Node #1
@@ -80,7 +83,7 @@ public class Graph {
     }
 
     /**
-     * Add a two-way edge between nodes, from n1 to n2 and n2 to n1 with a
+     * Add a two-way edge between nodes, from (n1 to n2) and (n2 to n1) with a
      * weight of 1.
      *
      * @param n1 Node #1
