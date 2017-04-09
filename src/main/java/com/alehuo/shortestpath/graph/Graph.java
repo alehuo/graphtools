@@ -46,39 +46,48 @@ public class Graph {
     }
 
     /**
-     * Add a connection between two nodes.
-     *
-     * @param n1 Node #1
-     * @param n2 Node #2
-     * @param weight Weight of the node
-     * @param bothWays Is the connection bidirectional
-     */
-    public void addConnection(Node n1, Node n2, long weight, boolean bothWays) {
-        adjacencyList[n1.getKey()].add(new Edge(n2, weight));
-        if (bothWays) {
-            adjacencyList[n2.getKey()].add(new Edge(n1, weight));
-        }
-    }
-
-    /**
-     * Add a connection between nodes, from n1 to n2.
+     * Add a single-way edge between two nodes, from n1 to n2.
      *
      * @param n1 Node #1
      * @param n2 Node #2
      * @param weight Weight of the node
      */
-    public void addConnection(Node n1, Node n2, long weight) {
+    public void addSwEdge(Node n1, Node n2, long weight) {
         adjacencyList[n1.getKey()].add(new Edge(n2, weight));
     }
 
     /**
-     * Add a connection between nodes, from n1 to n2 with a weight of 1.
+     * Add a two-way edge between nodes, from n1 to n2 and n2 to n1.
+     *
+     * @param n1 Node #1
+     * @param n2 Node #2
+     * @param weight Weight of the node
+     */
+    public void addTwEdge(Node n1, Node n2, long weight) {
+        addSwEdge(n1, n2, weight);
+        addSwEdge(n2, n1, weight);
+    }
+
+    /**
+     * Add a single-way edge between two nodes, from n1 to n2 with a weight of
+     * 1.
      *
      * @param n1 Node #1
      * @param n2 Node #2
      */
-    public void addConnection(Node n1, Node n2) {
-        adjacencyList[n1.getKey()].add(new Edge(n2, 1));
+    public void addSwEdge(Node n1, Node n2) {
+        addSwEdge(n1, n2, 1);
+    }
+
+    /**
+     * Add a two-way edge between nodes, from n1 to n2 and n2 to n1 with a
+     * weight of 1.
+     *
+     * @param n1 Node #1
+     * @param n2 Node #2
+     */
+    public void addTwEdge(Node n1, Node n2) {
+        addTwEdge(n1, n2, 1);
     }
 
     public int getN() {

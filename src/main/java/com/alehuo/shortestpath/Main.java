@@ -28,13 +28,13 @@ public class Main {
     public static void main(String[] args) throws NegativeWeightException {
 
         Graph g = new Graph(5);
-        g.addConnection(new Node(1), new Node(4), 5, true); //1 <--> 4
-        g.addConnection(new Node(1), new Node(2), 2, true); //1 <--> 2
-        g.addConnection(new Node(2), new Node(4), 5, true); //2 <--> 4
-        g.addConnection(new Node(2), new Node(5), 4, true); //2 <--> 5
-        g.addConnection(new Node(2), new Node(3), 14, true); //2 <--> 3
-        g.addConnection(new Node(4), new Node(5), 58); //4 --> 5
-        g.addConnection(new Node(3), new Node(5), 34, false); //3 --> 5
+        g.addTwEdge(new Node(1), new Node(4), 5); //1 <--> 4
+        g.addTwEdge(new Node(1), new Node(2), 2); //1 <--> 2
+        g.addTwEdge(new Node(2), new Node(4), 5); //2 <--> 4
+        g.addTwEdge(new Node(2), new Node(5), 4); //2 <--> 5
+        g.addTwEdge(new Node(2), new Node(3), 14); //2 <--> 3
+        g.addTwEdge(new Node(4), new Node(5), 58); //4 --> 5
+        g.addTwEdge(new Node(3), new Node(5), 34); //3 --> 5
 
         for (int i = 1; i <= 5; i++) {
             for (int j = 1; j <= 5; j++) {

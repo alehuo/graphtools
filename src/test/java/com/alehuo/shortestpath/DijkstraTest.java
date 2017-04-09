@@ -37,16 +37,16 @@ public class DijkstraTest {
 
         Graph g = new Graph(8);
 
-        g.addConnection(new Node(1), new Node(2), 9, true);
-        g.addConnection(new Node(1), new Node(3), 3, true);
-        g.addConnection(new Node(2), new Node(4), 5, true);
-        g.addConnection(new Node(2), new Node(7), 4, true);
-        g.addConnection(new Node(3), new Node(7), 4, true);
-        g.addConnection(new Node(3), new Node(5), 8, true);
-        g.addConnection(new Node(4), new Node(8), 9, true);
-        g.addConnection(new Node(5), new Node(8), 2, true);
-        g.addConnection(new Node(5), new Node(7), 3, true);
-        g.addConnection(new Node(6), new Node(7), 8, true);
+        g.addTwEdge(new Node(1), new Node(2), 9);
+        g.addTwEdge(new Node(1), new Node(3), 3);
+        g.addTwEdge(new Node(2), new Node(4), 5);
+        g.addTwEdge(new Node(2), new Node(7), 4);
+        g.addTwEdge(new Node(3), new Node(7), 4);
+        g.addTwEdge(new Node(3), new Node(5), 8);
+        g.addTwEdge(new Node(4), new Node(8), 9);
+        g.addTwEdge(new Node(5), new Node(8), 2);
+        g.addTwEdge(new Node(5), new Node(7), 3);
+        g.addTwEdge(new Node(6), new Node(7), 8);
 
         for (int i = 1; i <= 8; i++) {
             assertEquals("Distance from node 1 to " + i + " should be " + dist[i], dist[i], g.shortestDistance(new Node(1), new Node(i)));
@@ -57,7 +57,7 @@ public class DijkstraTest {
     @Test(expected = NegativeWeightException.class)
     public void negativeWeightsThrowAnException() throws NegativeWeightException {
         Graph g = new Graph(2);
-        g.addConnection(new Node(1), new Node(2), -1);
+        g.addTwEdge(new Node(1), new Node(2), -1);
         g.shortestDistance(new Node(1), new Node(2));
     }
 
