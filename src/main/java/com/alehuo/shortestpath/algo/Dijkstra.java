@@ -19,18 +19,18 @@ package com.alehuo.shortestpath.algo;
 import com.alehuo.shortestpath.graph.Graph;
 import com.alehuo.shortestpath.graph.Edge;
 import com.alehuo.shortestpath.graph.Node;
-import com.alehuo.shortestpath.exception.NegativeWeightException;
+import com.alehuo.shortestpath.exception.EdgeWeightException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
 /**
- * An implementation of Dijkstra's algoritm using Java's priority queue to find
- * the shortest distance between nodes.
+ * A Java implementation of Dijkstra's algoritm using priority queue to find the
+ * shortest distance between nodes.
  *
  * @author alehuo
  */
-public class Dijkstra {
+public class Dijkstra implements Algorithm {
 
     /**
      * Graph.
@@ -53,10 +53,10 @@ public class Dijkstra {
      * large enough.
      *
      * @return Two-dimensional matrice of every shortest distance.
-     * @throws NegativeWeightException Dijkstra's algorithm doesn't allow
-     * negative weights, so throws an exception if one is found.
+     * @throws EdgeWeightException Dijkstra's algorithm doesn't allow negative
+     * weights, so throws an exception if one is found.
      */
-    public long[][] allShortestDistances() throws NegativeWeightException {
+    public long[][] allShortestDistances() throws EdgeWeightException {
         long[][] dist = new long[g.getN() + 1][g.getN() + 1];
         for (long[] ls : dist) {
             Arrays.fill(ls, Long.MAX_VALUE);
@@ -83,10 +83,11 @@ public class Dijkstra {
      * @param n2 Ending node
      * @return -1 if the node is unreachable from the starting node, otherwise
      * the shortest distance between nodes n1 and n2.
-     * @throws NegativeWeightException Dijkstra's algorithm doesn't allow
-     * negative weights, so throws an exception if one is found.
+     * @throws EdgeWeightException Dijkstra's algorithm doesn't allow negative
+     * weights, so throws an exception if one is found.
      */
-    public long shortestDistance(Node n1, Node n2) throws NegativeWeightException {
+    @Override
+    public long shortestDistance(Node n1, Node n2) throws EdgeWeightException {
         boolean[] visited = new boolean[g.getN() + 1];
         long[] dist = new long[g.getN() + 1];
         Arrays.fill(dist, Long.MAX_VALUE);
@@ -100,12 +101,12 @@ public class Dijkstra {
         while (!priorityQueue.isEmpty()) {
             Edge n = priorityQueue.poll();
             if (n.getWeight() < 0) {
-                throw new NegativeWeightException();
+                throw new EdgeWeightException("Edge weight must not be negative.");
             }
             ArrayList<Edge> connections = g.getEdgesFrom(n.getNode());
             for (Edge connection : connections) {
                 if (connection.getWeight() < 0) {
-                    throw new NegativeWeightException();
+                    throw new EdgeWeightException();
                 }
                 if (!visited[connection.getNode().getKey()]) {
                     if (n.getWeight() + connection.getWeight() < dist[connection.getNode().getKey()]) {

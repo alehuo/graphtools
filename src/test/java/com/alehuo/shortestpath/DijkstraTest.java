@@ -16,9 +16,11 @@
  */
 package com.alehuo.shortestpath;
 
+import com.alehuo.shortestpath.algo.AlgorithmType;
 import com.alehuo.shortestpath.graph.Graph;
 import com.alehuo.shortestpath.graph.Node;
-import com.alehuo.shortestpath.exception.NegativeWeightException;
+import com.alehuo.shortestpath.exception.EdgeWeightException;
+import com.alehuo.shortestpath.exception.UnknownAlgorithmException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -30,7 +32,7 @@ import static org.junit.Assert.*;
 public class DijkstraTest {
 
     @Test
-    public void algorithmWorks() throws NegativeWeightException {
+    public void algorithmWorks() throws EdgeWeightException, UnknownAlgorithmException {
 
         //Distances from starting node to other nodes
         long[] dist = {Long.MAX_VALUE, 0, 9, 3, 14, 10, 15, 7, 12};
@@ -49,16 +51,16 @@ public class DijkstraTest {
         g.addTwEdge(new Node(6), new Node(7), 8);
 
         for (int i = 1; i <= 8; i++) {
-            assertEquals("Distance from node 1 to " + i + " should be " + dist[i], dist[i], g.shortestDistance(new Node(1), new Node(i)));
+            assertEquals("Distance from node 1 to " + i + " should be " + dist[i], dist[i], g.shortestDistance(new Node(1), new Node(i), AlgorithmType.DIJKSTRA));
         }
 
     }
 
-    @Test(expected = NegativeWeightException.class)
-    public void negativeWeightsThrowAnException() throws NegativeWeightException {
+    @Test(expected = EdgeWeightException.class)
+    public void negativeWeightsThrowAnException() throws EdgeWeightException, UnknownAlgorithmException {
         Graph g = new Graph(2);
         g.addTwEdge(new Node(1), new Node(2), -1);
-        g.shortestDistance(new Node(1), new Node(2));
+        g.shortestDistance(new Node(1), new Node(2), AlgorithmType.DIJKSTRA);
     }
 
 }

@@ -16,8 +16,11 @@
  */
 package com.alehuo.shortestpath.graph;
 
+import com.alehuo.shortestpath.algo.AlgorithmType;
+import com.alehuo.shortestpath.algo.BreadthFirstSearch;
 import com.alehuo.shortestpath.algo.Dijkstra;
-import com.alehuo.shortestpath.exception.NegativeWeightException;
+import com.alehuo.shortestpath.exception.EdgeWeightException;
+import com.alehuo.shortestpath.exception.UnknownAlgorithmException;
 import java.util.ArrayList;
 
 /**
@@ -117,18 +120,34 @@ public class Graph {
     }
 
     /**
-     * Returns the shortest path between nodes using Dijkstra's algorithm.
+     * Returns the shortest path between nodes using the selected algorithm.
      *
      * @param n1 Starting node
      * @param n2 Ending node
+     * @param type Algorithm type.
      * @return Returns -1 if a path is not found, otherwise returns the shortest
      * path between nodes n1 and n2
-     * @throws NegativeWeightException Dijkstra's algorithm doesn't allow
-     * negative weights, so throws an exception if one is found.
+     * @throws EdgeWeightException Dijkstra's algorithm doesn't allow negative
+     * weights, so throws an exception if one is found.
+     * @throws com.alehuo.shortestpath.exception.UnknownAlgorithmException
+     * UnknownAlgorithmException if a suitable algorithm is not found.
      */
-    public long shortestDistance(Node n1, Node n2) throws NegativeWeightException {
-        Dijkstra d = new Dijkstra(this);
-        return d.shortestDistance(n1, n2);
+    public long shortestDistance(Node n1, Node n2, AlgorithmType type) throws EdgeWeightException, UnknownAlgorithmException {
+        if (null == type) {
+            throw new UnknownAlgorithmException("Unknown algorithm type.");
+        } else {
+            switch (type) {
+                case DIJKSTRA:
+                    Dijkstra d = new Dijkstra(this);
+                    return d.shortestDistance(n1, n2);
+                case BFS:
+                    BreadthFirstSearch bfs = new BreadthFirstSearch(this);
+                    return bfs.shortestDistance(n1, n2);
+                default:
+                    throw new UnknownAlgorithmException("Unknown algorithm type.");
+            }
+        }
+
     }
 
 }

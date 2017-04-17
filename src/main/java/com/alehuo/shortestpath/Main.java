@@ -16,16 +16,18 @@
  */
 package com.alehuo.shortestpath;
 
+import com.alehuo.shortestpath.algo.AlgorithmType;
 import com.alehuo.shortestpath.graph.Graph;
 import com.alehuo.shortestpath.graph.Node;
-import com.alehuo.shortestpath.exception.NegativeWeightException;
+import com.alehuo.shortestpath.exception.EdgeWeightException;
+import com.alehuo.shortestpath.exception.UnknownAlgorithmException;
 
 /**
  * @author alehuo
  */
 public class Main {
 
-    public static void main(String[] args) throws NegativeWeightException {
+    public static void main(String[] args) throws EdgeWeightException, UnknownAlgorithmException {
 
         int nodeCount = 7;
 
@@ -50,7 +52,7 @@ public class Main {
 
         for (int i = 1; i <= nodeCount; i++) {
             for (int j = 1; j <= nodeCount; j++) {
-                System.out.println(i + " -> " + j + " : " + g.shortestDistance(new Node(i), new Node(j)));
+                System.out.println(i + " -> " + j + " : " + g.shortestDistance(new Node(i), new Node(j), AlgorithmType.DIJKSTRA));
             }
         }
 

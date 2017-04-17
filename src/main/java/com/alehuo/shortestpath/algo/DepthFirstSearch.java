@@ -14,28 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath.graph;
+package com.alehuo.shortestpath.algo;
+
+import com.alehuo.shortestpath.exception.EdgeWeightException;
+import com.alehuo.shortestpath.graph.Node;
 
 /**
- * Node class.
+ * Depth-first search algorithm.
  *
  * @author alehuo
  */
-public class Node {
-
-    private final int key;
-
-    public Node(int key) {
-        this.key = key;
-    }
-
-    public int getKey() {
-        return key;
-    }
+public class DepthFirstSearch implements Algorithm {
 
     @Override
-    public String toString() {
-        return "Key: " + key;
+    public long shortestDistance(Node n1, Node n2) throws EdgeWeightException {
+        throw new UnsupportedOperationException("Not supported.");
     }
 
 }

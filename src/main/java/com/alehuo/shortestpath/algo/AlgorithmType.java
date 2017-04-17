@@ -14,28 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath.graph;
+package com.alehuo.shortestpath.algo;
 
 /**
- * Node class.
+ * Algorithm type.
  *
  * @author alehuo
  */
-public class Node {
-
-    private final int key;
-
-    public Node(int key) {
-        this.key = key;
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    @Override
-    public String toString() {
-        return "Key: " + key;
-    }
-
+public enum AlgorithmType {
+    DIJKSTRA, BFS
 }

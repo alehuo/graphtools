@@ -14,23 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath.exception;
+package com.alehuo.shortestpath.algo;
+
+import com.alehuo.shortestpath.exception.EdgeWeightException;
+import com.alehuo.shortestpath.graph.Node;
 
 /**
- * Negative edge weight exception.
+ * Floyd-Warshall algorithm.
  *
  * @author alehuo
  */
-public class NegativeWeightException extends Exception {
+public class FloydWarshall implements Algorithm {
 
-    private static final long serialVersionUID = 1L;
-
-    public NegativeWeightException() {
-        super();
-    }
-
-    public NegativeWeightException(String msg, Throwable throwable) {
-        super(msg, throwable);
+    @Override
+    public long shortestDistance(Node n1, Node n2) throws EdgeWeightException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -14,28 +14,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath.graph;
+package com.alehuo.shortestpath.exception;
 
 /**
- * Node class.
+ * Unknown algorithm exception.
  *
  * @author alehuo
  */
-public class Node {
+public class UnknownAlgorithmException extends Exception {
 
-    private final int key;
+    private static final long serialVersionUID = 1L;
 
-    public Node(int key) {
-        this.key = key;
+    public UnknownAlgorithmException() {
+        super();
     }
 
-    public int getKey() {
-        return key;
+    public UnknownAlgorithmException(String msg) {
+        super(msg);
     }
 
-    @Override
-    public String toString() {
-        return "Key: " + key;
+    public UnknownAlgorithmException(String msg, Throwable throwable) {
+        super(msg, throwable);
     }
 
 }
