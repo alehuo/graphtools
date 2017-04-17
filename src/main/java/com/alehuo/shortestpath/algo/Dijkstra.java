@@ -106,9 +106,10 @@ public class Dijkstra implements Algorithm {
             ArrayList<Edge> connections = g.getEdgesFrom(n.getNode());
             for (Edge connection : connections) {
                 if (connection.getWeight() < 0) {
-                    throw new EdgeWeightException();
+                    throw new EdgeWeightException("Edge weight must not be negative.");
                 }
                 if (!visited[connection.getNode().getKey()]) {
+                    //Relax operation
                     if (n.getWeight() + connection.getWeight() < dist[connection.getNode().getKey()]) {
                         dist[connection.getNode().getKey()] = n.getWeight() + connection.getWeight();
                         Edge tmpNode = new Edge(connection.getNode(), n.getWeight() + connection.getWeight());
