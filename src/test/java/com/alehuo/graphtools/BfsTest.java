@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.alehuo.shortestpath;
+package com.alehuo.graphtools;
 
-import com.alehuo.shortestpath.algo.AlgorithmType;
-import com.alehuo.shortestpath.exception.EdgeWeightException;
-import com.alehuo.shortestpath.exception.UnknownAlgorithmException;
-import com.alehuo.shortestpath.graph.Graph;
-import com.alehuo.shortestpath.graph.Node;
+import com.alehuo.graphtools.algo.AlgorithmType;
+import com.alehuo.graphtools.exception.EdgeWeightException;
+import com.alehuo.graphtools.exception.UnknownAlgorithmException;
+import com.alehuo.graphtools.graph.Graph;
+import com.alehuo.graphtools.graph.Node;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

@@ -14,13 +14,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath.color;
+package com.alehuo.graphtools.exception;
 
 /**
- * NColor class used by Breadth-first search algorithm.
+ * Unknown algorithm exception.
  *
  * @author alehuo
  */
-public enum NColor {
-    WHITE, GRAY, BLACK;
+public class UnknownAlgorithmException extends Exception {
+
+    private static final long serialVersionUID = 1L;
+
+    public UnknownAlgorithmException() {
+        super();
+    }
+
+    public UnknownAlgorithmException(String msg) {
+        super(msg);
+    }
+
+    public UnknownAlgorithmException(String msg, Throwable throwable) {
+        super(msg, throwable);
+    }
+
 }

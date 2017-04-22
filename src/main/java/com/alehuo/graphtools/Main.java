@@ -14,13 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath;
+package com.alehuo.graphtools;
 
-import com.alehuo.shortestpath.algo.AlgorithmType;
-import com.alehuo.shortestpath.graph.Graph;
-import com.alehuo.shortestpath.graph.Node;
-import com.alehuo.shortestpath.exception.EdgeWeightException;
-import com.alehuo.shortestpath.exception.UnknownAlgorithmException;
+import com.alehuo.graphtools.algo.AlgorithmType;
+import com.alehuo.graphtools.graph.Graph;
+import com.alehuo.graphtools.graph.Node;
+import com.alehuo.graphtools.exception.EdgeWeightException;
+import com.alehuo.graphtools.exception.UnknownAlgorithmException;
 
 /**
  * @author alehuo

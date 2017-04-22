@@ -14,13 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath.graph;
+package com.alehuo.graphtools.graph;
 
-import com.alehuo.shortestpath.algo.AlgorithmType;
-import com.alehuo.shortestpath.algo.BreadthFirstSearch;
-import com.alehuo.shortestpath.algo.Dijkstra;
-import com.alehuo.shortestpath.exception.EdgeWeightException;
-import com.alehuo.shortestpath.exception.UnknownAlgorithmException;
+import com.alehuo.graphtools.algo.AlgorithmType;
+import com.alehuo.graphtools.algo.BreadthFirstSearch;
+import com.alehuo.graphtools.algo.Dijkstra;
+import com.alehuo.graphtools.exception.EdgeWeightException;
+import com.alehuo.graphtools.exception.UnknownAlgorithmException;
 import java.util.ArrayList;
 
 /**
@@ -129,7 +129,7 @@ public class Graph {
      * path between nodes n1 and n2
      * @throws EdgeWeightException Dijkstra's algorithm doesn't allow negative
      * weights, so throws an exception if one is found.
-     * @throws com.alehuo.shortestpath.exception.UnknownAlgorithmException
+     * @throws com.alehuo.graphtools.exception.UnknownAlgorithmException
      * UnknownAlgorithmException if a suitable algorithm is not found.
      */
     public long shortestDistance(Node n1, Node n2, AlgorithmType type) throws EdgeWeightException, UnknownAlgorithmException {

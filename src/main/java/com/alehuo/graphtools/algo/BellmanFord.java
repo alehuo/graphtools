@@ -14,28 +14,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath.graph;
+package com.alehuo.graphtools.algo;
+
+import com.alehuo.graphtools.graph.Node;
 
 /**
- * Node class.
+ * Bellman-Ford algorithm.
  *
  * @author alehuo
  */
-public class Node {
-
-    private final int key;
-
-    public Node(int key) {
-        this.key = key;
-    }
-
-    public int getKey() {
-        return key;
-    }
+public class BellmanFord implements Algorithm {
 
     @Override
-    public String toString() {
-        return "Key: " + key;
+    public long shortestDistance(Node n1, Node n2) {
+        return 0l;
     }
 
 }

@@ -14,13 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath.algo;
+package com.alehuo.graphtools.color;
 
 /**
- * Algorithm type.
+ * NColor class used by Breadth-first search algorithm.
  *
  * @author alehuo
  */
-public enum AlgorithmType {
-    DIJKSTRA, BFS
+public enum NColor {
+    WHITE, GRAY, BLACK;
 }

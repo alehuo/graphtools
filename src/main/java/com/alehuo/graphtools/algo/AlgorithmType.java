@@ -14,20 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath.algo;
-
-import com.alehuo.shortestpath.graph.Node;
+package com.alehuo.graphtools.algo;
 
 /**
- * Bellman-Ford algorithm.
+ * Algorithm type.
  *
  * @author alehuo
  */
-public class BellmanFord implements Algorithm {
-
-    @Override
-    public long shortestDistance(Node n1, Node n2) {
-        return 0l;
-    }
-
+public enum AlgorithmType {
+    DIJKSTRA, BFS
 }

@@ -14,27 +14,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath.exception;
+package com.alehuo.graphtools.graph;
 
 /**
- * Negative edge weight exception.
+ * Node class.
  *
  * @author alehuo
  */
-public class EdgeWeightException extends Exception {
+public class Node {
 
-    private static final long serialVersionUID = 1L;
+    private final int key;
 
-    public EdgeWeightException() {
-        super();
+    public Node(int key) {
+        this.key = key;
     }
 
-    public EdgeWeightException(String msg) {
-        super(msg);
+    public int getKey() {
+        return key;
     }
 
-    public EdgeWeightException(String msg, Throwable throwable) {
-        super(msg, throwable);
+    @Override
+    public String toString() {
+        return "Key: " + key;
     }
 
 }

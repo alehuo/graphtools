@@ -14,27 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.shortestpath.exception;
+package com.alehuo.graphtools.algo;
+
+import com.alehuo.graphtools.exception.EdgeWeightException;
+import com.alehuo.graphtools.graph.Node;
 
 /**
- * Unknown algorithm exception.
+ * Depth-first search algorithm.
  *
  * @author alehuo
  */
-public class UnknownAlgorithmException extends Exception {
+public class DepthFirstSearch implements Algorithm {
 
-    private static final long serialVersionUID = 1L;
-
-    public UnknownAlgorithmException() {
-        super();
-    }
-
-    public UnknownAlgorithmException(String msg) {
-        super(msg);
-    }
-
-    public UnknownAlgorithmException(String msg, Throwable throwable) {
-        super(msg, throwable);
+    @Override
+    public long shortestDistance(Node n1, Node n2) throws EdgeWeightException {
+        throw new UnsupportedOperationException("Not supported.");
     }
 
 }
