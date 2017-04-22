@@ -16,19 +16,11 @@
  */
 package com.alehuo.graphtools.algo;
 
-import com.alehuo.graphtools.exception.EdgeWeightException;
-import com.alehuo.graphtools.graph.Node;
-
 /**
  * Floyd-Warshall algorithm.
  *
  * @author alehuo
  */
-public class FloydWarshall implements Algorithm {
-
-    @Override
-    public long shortestDistance(Node n1, Node n2) throws EdgeWeightException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+public class FloydWarshall {
 
 }

@@ -14,13 +14,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alehuo.graphtools.algo;
+package com.alehuo.graphtools.exception;
 
 /**
- * Bellman-Ford algorithm.
+ * Negative edge weight exception.
  *
  * @author alehuo
  */
-public class BellmanFord {
+public class NodeKeyException extends Exception {
+
+    private static final long serialVersionUID = 1L;
+
+    public NodeKeyException() {
+        super();
+    }
+
+    public NodeKeyException(String msg) {
+        super(msg);
+    }
+
+    public NodeKeyException(String msg, Throwable throwable) {
+        super(msg, throwable);
+    }
 
 }

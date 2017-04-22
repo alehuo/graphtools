@@ -22,6 +22,7 @@ import com.alehuo.graphtools.algo.Dijkstra;
 import com.alehuo.graphtools.exception.EdgeWeightException;
 import com.alehuo.graphtools.exception.UnknownAlgorithmException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Graph class.

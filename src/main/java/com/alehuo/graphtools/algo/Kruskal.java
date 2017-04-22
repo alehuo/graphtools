@@ -16,15 +16,19 @@
  */
 package com.alehuo.graphtools.algo;
 
-import com.alehuo.graphtools.exception.EdgeWeightException;
-import com.alehuo.graphtools.graph.Node;
+import com.alehuo.graphtools.graph.Graph;
 
 /**
- * Algorithm interface.
+ * Kruskal's algorithm.
  *
- * @author alehuo
+ * @author ahuotala
  */
-public interface Algorithm {
+public class Kruskal {
 
-    long shortestDistance(Node n1, Node n2) throws EdgeWeightException;
+    private final Graph g;
+
+    public Kruskal(Graph g) {
+        this.g = g;
+    }
+
 }

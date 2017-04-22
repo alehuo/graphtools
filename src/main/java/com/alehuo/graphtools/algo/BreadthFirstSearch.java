@@ -31,7 +31,7 @@ import java.util.Stack;
  *
  * @author alehuo
  */
-public class BreadthFirstSearch implements Algorithm {
+public class BreadthFirstSearch {
 
     /**
      * Graph.
@@ -155,7 +155,6 @@ public class BreadthFirstSearch implements Algorithm {
      * @throws EdgeWeightException Edge weight exception if the graph is
      * weighted.
      */
-    @Override
     public long shortestDistance(Node n1, Node n2) throws EdgeWeightException {
         bfs(n1);
         return dist[n2.getKey()];

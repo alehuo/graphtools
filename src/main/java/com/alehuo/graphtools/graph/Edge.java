@@ -16,6 +16,8 @@
  */
 package com.alehuo.graphtools.graph;
 
+import java.util.Objects;
+
 /**
  * Edge class.
  *
@@ -43,6 +45,31 @@ public class Edge implements Comparable<Edge> {
 
     public Node getNode() {
         return node;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.node);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Edge other = (Edge) obj;
+        if (!Objects.equals(this.node, other.node)) {
+            return false;
+        }
+        return true;
     }
 
     @Override

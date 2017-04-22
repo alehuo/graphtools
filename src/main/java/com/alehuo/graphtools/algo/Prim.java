@@ -16,11 +16,23 @@
  */
 package com.alehuo.graphtools.algo;
 
+import com.alehuo.graphtools.graph.Graph;
+
 /**
- * Bellman-Ford algorithm.
+ * Prim's algorithm.
  *
  * @author alehuo
  */
-public class BellmanFord {
+public class Prim {
+
+    private final Graph g;
+
+    public Prim(Graph g) {
+        this.g = g;
+    }
+
+    public void runPrim() {
+        
+    }
 
 }

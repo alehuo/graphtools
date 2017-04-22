@@ -30,7 +30,7 @@ import java.util.PriorityQueue;
  *
  * @author alehuo
  */
-public class Dijkstra implements Algorithm {
+public class Dijkstra {
 
     /**
      * Graph.
@@ -86,7 +86,6 @@ public class Dijkstra implements Algorithm {
      * @throws EdgeWeightException Dijkstra's algorithm doesn't allow negative
      * weights, so throws an exception if one is found.
      */
-    @Override
     public long shortestDistance(Node n1, Node n2) throws EdgeWeightException {
         boolean[] visited = new boolean[g.getN() + 1];
         long[] dist = new long[g.getN() + 1];

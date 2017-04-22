@@ -16,19 +16,11 @@
  */
 package com.alehuo.graphtools.algo;
 
-import com.alehuo.graphtools.exception.EdgeWeightException;
-import com.alehuo.graphtools.graph.Node;
-
 /**
  * Depth-first search algorithm.
  *
  * @author alehuo
  */
-public class DepthFirstSearch implements Algorithm {
-
-    @Override
-    public long shortestDistance(Node n1, Node n2) throws EdgeWeightException {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+public class DepthFirstSearch {
 
 }
