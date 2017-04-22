@@ -19,6 +19,7 @@ package com.alehuo.graphtools.graph;
 import com.alehuo.graphtools.algo.AlgorithmType;
 import com.alehuo.graphtools.algo.BreadthFirstSearch;
 import com.alehuo.graphtools.algo.Dijkstra;
+import com.alehuo.graphtools.algo.Dijkstra2;
 import com.alehuo.graphtools.exception.EdgeWeightException;
 import com.alehuo.graphtools.exception.UnknownAlgorithmException;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
  *
  * @author alehuo
  */
-public class Graph {
+public class Graph2 {
 
     /**
      * Adjacency list.
@@ -40,7 +41,7 @@ public class Graph {
      */
     private final int n;
 
-    public Graph(int n) {
+    public Graph2(int n) {
         this.n = n;
         //Initialize adjacency list
         adjacencyList = new ArrayList[n + 1];
@@ -57,7 +58,7 @@ public class Graph {
      * @param weight Weight of the node
      */
     public void addSwEdge(Node n1, Node n2, long weight) {
-        adjacencyList[n1.getKey()].add(new Edge(n2, weight));
+        adjacencyList[n1.getKey()].add(new Edge2(n1, n2, weight));
     }
 
     /**
@@ -102,7 +103,7 @@ public class Graph {
      * @param n Node
      * @return List of outcoming edges fron node n
      */
-    public ArrayList<Edge> getEdgesFrom(Node n) {
+    public ArrayList<Edge2> getEdgesFrom(Node n) {
         return adjacencyList[n.getKey()];
     }
 
@@ -138,11 +139,11 @@ public class Graph {
         } else {
             switch (type) {
                 case DIJKSTRA:
-                    Dijkstra d = new Dijkstra(this);
+                    Dijkstra2 d = new Dijkstra2(this);
                     return d.shortestDistance(n1, n2);
                 case BFS:
-                    BreadthFirstSearch bfs = new BreadthFirstSearch(this);
-                    return bfs.shortestDistance(n1, n2);
+//                    BreadthFirstSearch bfs = new BreadthFirstSearch(this);
+//                    return bfs.shortestDistance(n1, n2);
                 default:
                     throw new UnknownAlgorithmException("Unknown algorithm type.");
             }
