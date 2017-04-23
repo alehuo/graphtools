@@ -16,10 +16,11 @@
  */
 package com.alehuo.graphtools.algo;
 
-import com.alehuo.graphtools.graph.Graph;
 import com.alehuo.graphtools.graph.Edge;
 import com.alehuo.graphtools.graph.Node;
 import com.alehuo.graphtools.exception.EdgeWeightException;
+import com.alehuo.graphtools.graph.Edge;
+import com.alehuo.graphtools.graph.Graph;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.PriorityQueue;
@@ -77,8 +78,6 @@ public class Dijkstra {
     /**
      * Returns the shortest distance between two nodes.
      *
-     * Time complexity: O((|V|+|E|)log|V|)
-     *
      * @param n1 Starting node
      * @param n2 Ending node
      * @return -1 if the node is unreachable from the starting node, otherwise
@@ -94,31 +93,46 @@ public class Dijkstra {
 
         PriorityQueue<Edge> priorityQueue = new PriorityQueue<>();
 
-        //Add the starting edge to the queue
-        priorityQueue.add(new Edge(n1, dist[n1.getKey()]));
+        //Add the starting node to the queue
+        priorityQueue.add(new Edge(n1, null, dist[n1.getKey()]));
 
         while (!priorityQueue.isEmpty()) {
+            //Selects tne edge with the smallest weight to the starting node n1
             Edge n = priorityQueue.poll();
             if (n.getWeight() < 0) {
                 throw new EdgeWeightException("Edge weight must not be negative.");
             }
-            ArrayList<Edge> connections = g.getEdgesFrom(n.getNode());
+            ArrayList<Edge> connections = g.getEdgesFrom(n.getStartingNode());
             for (Edge connection : connections) {
                 if (connection.getWeight() < 0) {
                     throw new EdgeWeightException("Edge weight must not be negative.");
                 }
-                if (!visited[connection.getNode().getKey()]) {
+                if (!visited[connection.getEndingNode().getKey()]) {
                     //Relax operation
-                    if (n.getWeight() + connection.getWeight() < dist[connection.getNode().getKey()]) {
-                        dist[connection.getNode().getKey()] = n.getWeight() + connection.getWeight();
-                        Edge tmpNode = new Edge(connection.getNode(), n.getWeight() + connection.getWeight());
+                    if (n.getWeight() + connection.getWeight() < dist[connection.getEndingNode().getKey()]) {
+                        dist[connection.getEndingNode().getKey()] = n.getWeight() + connection.getWeight();
+                        Edge tmpNode = new Edge(connection.getEndingNode(), null, n.getWeight() + connection.getWeight());
                         priorityQueue.add(tmpNode);
                     }
                 }
             }
-            visited[n.getNode().getKey()] = true;
+            visited[n.getStartingNode().getKey()] = true;
         }
         return (dist[n2.getKey()] == Long.MAX_VALUE) ? -1 : dist[n2.getKey()];
+    }
+
+    /**
+     * Returns the shortest distance between two nodes.
+     *
+     * @param n1 Starting node
+     * @param n2 Ending node
+     * @return -1 if the node is unreachable from the starting node, otherwise
+     * the shortest distance between nodes n1 and n2.
+     * @throws EdgeWeightException Dijkstra's algorithm doesn't allow negative
+     * weights, so throws an exception if one is found.
+     */
+    public long shortestDistance(int n1, int n2) throws EdgeWeightException {
+        return this.shortestDistance(new Node(n1), new Node(n2));
     }
 
 }

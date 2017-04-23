@@ -17,10 +17,15 @@
 package com.alehuo.graphtools;
 
 import com.alehuo.graphtools.algo.AlgorithmType;
+import com.alehuo.graphtools.comparator.EdgeWeightComparator;
 import com.alehuo.graphtools.graph.Graph;
 import com.alehuo.graphtools.graph.Node;
 import com.alehuo.graphtools.exception.EdgeWeightException;
 import com.alehuo.graphtools.exception.UnknownAlgorithmException;
+import com.alehuo.graphtools.graph.Edge;
+import com.alehuo.graphtools.graph.Graph;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @author alehuo
@@ -50,11 +55,17 @@ public class Main {
         //Single way edge with a basic weight
         g.addSwEdge(new Node(6), new Node(7)); //6 -(1)-> 7
 
-        for (int i = 1; i <= nodeCount; i++) {
-            for (int j = 1; j <= nodeCount; j++) {
-                System.out.println(i + " -> " + j + " : " + g.shortestDistance(new Node(i), new Node(j), AlgorithmType.DIJKSTRA));
-            }
+        ArrayList<Edge> edges = g.getEdges();
+        Collections.sort(edges, new EdgeWeightComparator(true));
+        for (Edge edge : edges) {
+            System.out.println(edge);
         }
+
+//        for (int i = 1; i <= nodeCount; i++) {
+//            for (int j = 1; j <= nodeCount; j++) {
+//                System.out.println(i + " -> " + j + " : " + g.shortestDistance(new Node(i), new Node(j), AlgorithmType.DIJKSTRA));
+//            }
+//        }
 
     }
 }

@@ -25,17 +25,20 @@ import java.util.Objects;
  */
 public class Edge implements Comparable<Edge> {
 
-    private final Node node;
+    private final Node start;
+    private final Node end;
     private final long weight;
 
     /**
      * Edge class.
      *
-     * @param node Node
+     * @param start Starting node
+     * @param end Ending node
      * @param weight Weight
      */
-    public Edge(Node node, long weight) {
-        this.node = node;
+    public Edge(Node start, Node end, long weight) {
+        this.start = start;
+        this.end = end;
         this.weight = weight;
     }
 
@@ -43,14 +46,20 @@ public class Edge implements Comparable<Edge> {
         return weight;
     }
 
-    public Node getNode() {
-        return node;
+    public Node getStartingNode() {
+        return start;
+    }
+
+    public Node getEndingNode() {
+        return end;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.node);
+        int hash = 3;
+        hash = 19 * hash + Objects.hashCode(this.start);
+        hash = 19 * hash + Objects.hashCode(this.end);
+        hash = 19 * hash + (int) (this.weight ^ (this.weight >>> 32));
         return hash;
     }
 
@@ -66,7 +75,13 @@ public class Edge implements Comparable<Edge> {
             return false;
         }
         final Edge other = (Edge) obj;
-        if (!Objects.equals(this.node, other.node)) {
+        if (this.weight != other.weight) {
+            return false;
+        }
+        if (!Objects.equals(this.start, other.start)) {
+            return false;
+        }
+        if (!Objects.equals(this.end, other.end)) {
             return false;
         }
         return true;
@@ -84,7 +99,7 @@ public class Edge implements Comparable<Edge> {
 
     @Override
     public String toString() {
-        return node.getKey() + " (weight: " + weight + ")";
+        return start.getKey() + " --> " + end.getKey() + " (weight: " + weight + ")";
     }
 
 }

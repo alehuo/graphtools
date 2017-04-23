@@ -21,6 +21,7 @@ import com.alehuo.graphtools.graph.Graph;
 import com.alehuo.graphtools.graph.Node;
 import com.alehuo.graphtools.exception.EdgeWeightException;
 import com.alehuo.graphtools.exception.UnknownAlgorithmException;
+import com.alehuo.graphtools.graph.Graph;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

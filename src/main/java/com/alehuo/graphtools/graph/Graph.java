@@ -36,6 +36,11 @@ public class Graph {
     private final ArrayList[] adjacencyList;
 
     /**
+     * Edges.
+     */
+    private final ArrayList<Edge> edges;
+
+    /**
      * Number of nodes.
      */
     private final int n;
@@ -44,6 +49,8 @@ public class Graph {
         this.n = n;
         //Initialize adjacency list
         adjacencyList = new ArrayList[n + 1];
+        //Initialize edges list
+        edges = new ArrayList<>();
         for (int i = 0; i < adjacencyList.length; i++) {
             adjacencyList[i] = new ArrayList();
         }
@@ -57,7 +64,20 @@ public class Graph {
      * @param weight Weight of the node
      */
     public void addSwEdge(Node n1, Node n2, long weight) {
-        adjacencyList[n1.getKey()].add(new Edge(n2, weight));
+        Edge e = new Edge(n1, n2, weight);
+        adjacencyList[n1.getKey()].add(e);
+        edges.add(e);
+    }
+
+    /**
+     * Add a single-way edge between nodes (n1 => n2) with a custom weight.
+     *
+     * @param n1 Node #1
+     * @param n2 Node #2
+     * @param weight Weight of the node
+     */
+    public void addSwEdge(int n1, int n2, long weight) {
+        addSwEdge(new Node(n1), new Node(n2), weight);
     }
 
     /**
@@ -73,6 +93,17 @@ public class Graph {
     }
 
     /**
+     * Add a two-way edge between nodes (n1 <=> n2) with a custom weight.
+     *
+     * @param n1 Node #1
+     * @param n2 Node #2
+     * @param weight Weight of the node
+     */
+    public void addTwEdge(int n1, int n2, long weight) {
+        addTwEdge(new Node(n1), new Node(n2), weight);
+    }
+
+    /**
      * Add a single-way edge between two nodes, (n1 => n2) with a weight of 1.
      *
      * @param n1 Node #1
@@ -83,6 +114,16 @@ public class Graph {
     }
 
     /**
+     * Add a single-way edge between two nodes, (n1 => n2) with a weight of 1.
+     *
+     * @param n1 Node #1
+     * @param n2 Node #2
+     */
+    public void addSwEdge(int n1, int n2) {
+        addSwEdge(new Node(n1), new Node(n2));
+    }
+
+    /**
      * Add a two-way edge between nodes (n1 <=> n2) with a weight of 1.
      *
      * @param n1 Node #1
@@ -90,6 +131,16 @@ public class Graph {
      */
     public void addTwEdge(Node n1, Node n2) {
         addTwEdge(n1, n2, 1);
+    }
+
+    /**
+     * Add a two-way edge between nodes (n1 <=> n2) with a weight of 1.
+     *
+     * @param n1 Node #1
+     * @param n2 Node #2
+     */
+    public void addTwEdge(int n1, int n2) {
+        addTwEdge(new Node(n1), new Node(n2));
     }
 
     public int getN() {
@@ -104,6 +155,15 @@ public class Graph {
      */
     public ArrayList<Edge> getEdgesFrom(Node n) {
         return adjacencyList[n.getKey()];
+    }
+
+    /**
+     * Returns all edges.
+     *
+     * @return All edges
+     */
+    public ArrayList<Edge> getEdges() {
+        return edges;
     }
 
     /**
@@ -141,8 +201,8 @@ public class Graph {
                     Dijkstra d = new Dijkstra(this);
                     return d.shortestDistance(n1, n2);
                 case BFS:
-                    BreadthFirstSearch bfs = new BreadthFirstSearch(this);
-                    return bfs.shortestDistance(n1, n2);
+//                    BreadthFirstSearch bfs = new BreadthFirstSearch(this);
+//                    return bfs.shortestDistance(n1, n2);
                 default:
                     throw new UnknownAlgorithmException("Unknown algorithm type.");
             }
