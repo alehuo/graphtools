@@ -201,8 +201,8 @@ public class Graph {
                     Dijkstra d = new Dijkstra(this);
                     return d.shortestDistance(n1, n2);
                 case BFS:
-//                    BreadthFirstSearch bfs = new BreadthFirstSearch(this);
-//                    return bfs.shortestDistance(n1, n2);
+                    BreadthFirstSearch bfs = new BreadthFirstSearch(this);
+                    return bfs.shortestDistance(n1, n2);
                 default:
                     throw new UnknownAlgorithmException("Unknown algorithm type.");
             }

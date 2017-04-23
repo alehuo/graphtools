@@ -90,11 +90,11 @@ public class BreadthFirstSearch {
                 if (edge.getWeight() != 1) {
                     throw new EdgeWeightException("The graph must be an unweighted graph.");
                 }
-                if (colors[edge.getStartingNode().getKey()] == NColor.WHITE) {
-                    colors[edge.getStartingNode().getKey()] = NColor.GRAY;
-                    dist[edge.getStartingNode().getKey()] = dist[curr.getKey()] + 1;
-                    tree[edge.getStartingNode().getKey()] = curr;
-                    que.push(edge.getStartingNode());
+                if (colors[edge.getEndingNode().getKey()] == NColor.WHITE) {
+                    colors[edge.getEndingNode().getKey()] = NColor.GRAY;
+                    dist[edge.getEndingNode().getKey()] = dist[curr.getKey()] + 1;
+                    tree[edge.getEndingNode().getKey()] = curr;
+                    que.push(edge.getEndingNode());
                 }
             }
             colors[curr.getKey()] = NColor.BLACK;
