@@ -21,6 +21,8 @@ More features coming soon.
 
 ## Usage
 
+**Note: command line arg parsing is not yet implemented!**
+
 For example, if you'd like to calculate shortest path between two nodes using Dijkstra's algorithm:
 
 ```java -jar GraphTools.jar graph.json shortestPath dijkstra 1 5```
