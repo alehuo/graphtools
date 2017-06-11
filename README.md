@@ -2,7 +2,14 @@
 
 ## Introduction
 
-GraphTools is toolkit for finding shortest distance between nodes (weighted and unweighted), topological sorting of a graph and finding strongly connected components of a graph.
+GraphTools is toolkit that can calculate useful things about weighted and unweighted graphs.
+
+## Features
+
+* Calculating shortest or farthest distance between nodes (weighted and unweighted)
+* Topological sorting
+* Finding strongly connected components
+* Finding minimum and maximum spanning tree
 
 More features coming soon.
 
@@ -12,7 +19,27 @@ More features coming soon.
 * BFS algorithm (Shortest path)
 * Kruskal's algorithm (Minimum or maximum spanning tree)
 
-## Examples
+## Usage
+
+For example, if you'd like to calculate shortest path between two nodes using Dijkstra's algorithm:
+
+```java -jar GraphTools.jar graph.json shortestPath dijkstra 1 5```
+
+Will return (depending on the graph):
+
+```
+42
+```
+
+For shortest spanning tree of a graph:
+
+```java -jar GraphTools.jar graph.json shortestSpanningTree kruskal```
+
+```
+3 --> 4 (weight: 7)
+2 --> 4 (weight: 6)
+1 --> 3 (weight: 4)
+```
 
 To do
 
