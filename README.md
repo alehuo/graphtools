@@ -8,8 +8,9 @@ More features coming soon.
 
 ## Algorithms currently supported by GraphTools
 
-* Dijkstra's algorithm
-* BFS algorithm
+* Dijkstra's algorithm (Shortest path)
+* BFS algorithm (Shortest path)
+* Kruskal's algorithm (Minimum or maximum spanning tree)
 
 ## Examples
 
@@ -24,7 +25,7 @@ To do
 - [ ] Floyd-Warshall's algorithm
 - [ ] Bellman-Ford's algorithm
 - [ ] DFS algorithm
-- [ ] Kruskal's algorithm
+- [X] Kruskal's algorithm
 - [ ] Prim's algorithm
 
 ## License

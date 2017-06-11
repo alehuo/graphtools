@@ -19,6 +19,7 @@ package com.alehuo.graphtools.graph;
 import com.alehuo.graphtools.algo.AlgorithmType;
 import com.alehuo.graphtools.algo.BreadthFirstSearch;
 import com.alehuo.graphtools.algo.Dijkstra;
+import com.alehuo.graphtools.algo.Kruskal;
 import com.alehuo.graphtools.exception.EdgeWeightException;
 import com.alehuo.graphtools.exception.UnknownAlgorithmException;
 import java.util.ArrayList;
@@ -154,7 +155,7 @@ public class Graph {
      * @return List of outcoming edges fron node n
      */
     public ArrayList<Edge> getEdgesFrom(Node n) {
-        return adjacencyList[n.getKey()];
+        return new ArrayList<>(adjacencyList[n.getKey()]);
     }
 
     /**
@@ -163,7 +164,7 @@ public class Graph {
      * @return All edges
      */
     public ArrayList<Edge> getEdges() {
-        return edges;
+        return new ArrayList<>(edges);
     }
 
     /**
@@ -208,6 +209,38 @@ public class Graph {
             }
         }
 
+    }
+
+    /**
+     * Returns the minimum spanning tree.
+     * @param type Algorithm type
+     * @return Returns the list of edges that are represent in the minimum spanning tree.
+     * @throws UnknownAlgorithmException If a suitable algorithm is not found, will throw an UnknownAlgorithmException.
+     */
+    public ArrayList<Edge> minimumSpanningTree(AlgorithmType type) throws UnknownAlgorithmException {
+        switch (type) {
+            case KRUSKAL:
+                Kruskal k = new Kruskal(this);
+                return k.spanningTree(false);
+            default:
+                throw new UnknownAlgorithmException("Unknown algorithm type.");
+        }
+    }
+    
+    /**
+     * Returns the maximum spanning tree.
+     * @param type Algorithm type
+     * @return Returns the list of edges that are represent in the maximum spanning tree.
+     * @throws UnknownAlgorithmException If a suitable algorithm is not found, will throw an UnknownAlgorithmException.
+     */
+    public ArrayList<Edge> maximumSpanningTree(AlgorithmType type) throws UnknownAlgorithmException {
+        switch (type) {
+            case KRUSKAL:
+                Kruskal k = new Kruskal(this);
+                return k.spanningTree(true);
+            default:
+                throw new UnknownAlgorithmException("Unknown algorithm type.");
+        }
     }
 
 }

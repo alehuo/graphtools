@@ -22,5 +22,5 @@ package com.alehuo.graphtools.algo;
  * @author alehuo
  */
 public enum AlgorithmType {
-    DIJKSTRA, BFS
+    DIJKSTRA, BFS, KRUSKAL
 }

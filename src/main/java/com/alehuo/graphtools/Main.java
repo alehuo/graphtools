@@ -34,10 +34,22 @@ public class Main {
 
     public static void main(String[] args) throws EdgeWeightException, UnknownAlgorithmException {
 
-        int nodeCount = 7;
+        int nodeCount = 4;
 
         Graph g = new Graph(nodeCount);
-
+        
+        g.addTwEdge(1, 2, 3);
+        g.addTwEdge(2, 4, 6);
+        g.addTwEdge(3, 4, 7);
+        g.addTwEdge(1, 3, 4);
+        g.addTwEdge(2, 3, 5);
+        
+        ArrayList<Edge> minimumSpanningTree = g.maximumSpanningTree(AlgorithmType.KRUSKAL);
+        for (Edge edge : minimumSpanningTree) {
+            System.out.println(edge);
+        }
+        
+        /*
         //Two way edges with custom weights
         g.addTwEdge(new Node(1), new Node(4), 5); //1 <-(5)-> 4
         g.addTwEdge(new Node(1), new Node(2), 2); //1 <-(2)-> 2
@@ -66,6 +78,7 @@ public class Main {
 //                System.out.println(i + " -> " + j + " : " + g.shortestDistance(new Node(i), new Node(j), AlgorithmType.DIJKSTRA));
 //            }
 //        }
+          */
 
     }
 }
