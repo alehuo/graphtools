@@ -1,4 +1,4 @@
-![](res/graphtools_logo.png)
+# GraphTools
 
 ## Introduction
 
