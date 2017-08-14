@@ -2,11 +2,11 @@
 
 ## Introduction
 
-GraphTools is toolkit that can calculate useful things about weighted and unweighted graphs.
+GraphTools is a toolkit that can calculate useful things about weighted and unweighted graphs.
 
 ## Features
 
-* Calculating shortest or farthest distance between nodes (weighted and unweighted)
+* Calculating shortest or longest distance between nodes (weighted and unweighted)
 * Topological sorting
 * Finding strongly connected components
 * Finding minimum and maximum spanning tree
